@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graficación - Selector RGB Neón</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: #0d0f17; color: #ffffff; font-family: 'Inter', sans-serif; min-height: 100vh;">
+
+  <div class="container py-4">
+    
+    <!-- Encabezado con datos visibles -->
+    <header class="p-4 mb-4 rounded-4" style="background: #161925; border-left: 5px solid #ff0055; box-shadow: 0 5px 20px rgba(0,0,0,0.5);">
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="badge" style="background-color: #ff0055; color: #fff; font-size: 0.8rem;">MATERIA</span>
+            <span style="color: #ff0055; font-weight: 700; font-family: 'Orbitron', sans-serif;">Graficación</span>
+          </div>
+          <h1 class="h4 mb-1 text-white" style="font-family: 'Orbitron', sans-serif;">1.1 Introducción a la programación de interfaces Web</h1>
+          <p class="text-secondary small mb-0">Unidad 1 — Práctica de Interacción y Modelado de Color RGB</p>
+        </div>
+        <div class="col-md-5 mt-3 mt-md-0">
+          <div class="p-3 rounded-3" style="background: #0d0f17; border: 1px solid rgba(255,0,85,0.3);">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="text-secondary small">Alumno:</span>
+              <strong class="text-white">Sanchez Garcia Juan Pablo</strong>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-secondary small">No. de Control:</span>
+              <span class="badge" style="background: #ff0055; color: #ffffff; font-family: monospace; font-size: 0.95rem;">24200101</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Panel Selector de Color -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="p-4 p-md-5 rounded-4" style="background: #161925; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
+          
+          <h2 class="h6 text-center text-uppercase mb-4" style="letter-spacing: 2px; color: #a0aec0; font-family: 'Orbitron', sans-serif;">Visualizador de Color Cyber-RGB</h2>
+
+          <!-- Recuadro donde se muestra el color (Con altura fija obligatoria) -->
+          <div class="position-relative mb-4">
+            <div id="colorBox" class="rounded-4 border border-2 border-secondary" style="height: 180px; width: 100%; transition: all 0.2s ease;"></div>
+          </div>
+
+          <!-- Paleta de Color y Código HEX -->
+          <div class="d-flex align-items-center justify-content-between p-3 rounded-3 mb-4" style="background: #0d0f17; border: 1px solid rgba(255,255,255,0.05);">
+            <div class="d-flex align-items-center gap-2">
+              <label for="colorPicker" class="form-label mb-0 fw-semibold text-white">Seleccionar Paleta:</label>
+              <input type="color" class="form-control form-control-color" id="colorPicker" value="#000000" style="cursor: pointer; background: transparent; border: 1px solid #4a5568;">
+            </div>
+            <div>
+              <span class="text-secondary small fw-bold">CÓDIGO HEX: </span>
+              <span id="hexCode" class="font-monospace fs-4 fw-bold" style="color: #ff0055; font-family: 'Orbitron', sans-serif;">#000000</span>
+            </div>
+          </div>
+
+          <!-- Controles RGB -->
+          <div class="d-flex flex-column gap-3">
+            
+            <!-- Rojo (Neón Red) -->
+            <div class="p-3 rounded-3" style="background: rgba(255, 0, 85, 0.05); border-left: 4px solid #ff0055;">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label for="redRange" class="fw-bold mb-0" style="color: #ff0055;">ROJO (R)</label>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-secondary small">Valor:</span>
+                  <input type="number" class="form-control text-center text-white fw-bold" id="redInput" min="0" max="255" value="0" style="width: 75px; background: #0d0f17; border: 1px solid #ff0055;">
+                </div>
+              </div>
+              <input type="range" class="form-range" id="redRange" min="0" max="255" value="0">
+            </div>
+
+            <!-- Verde -->
+            <div class="p-3 rounded-3" style="background: rgba(0, 255, 136, 0.05); border-left: 4px solid #00ff88;">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label for="greenRange" class="fw-bold mb-0" style="color: #00ff88;">VERDE (G)</label>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-secondary small">Valor:</span>
+                  <input type="number" class="form-control text-center text-white fw-bold" id="greenInput" min="0" max="255" value="0" style="width: 75px; background: #0d0f17; border: 1px solid #00ff88;">
+                </div>
+              </div>
+              <input type="range" class="form-range" id="greenRange" min="0" max="255" value="0">
+            </div>
+
+            <!-- Azul -->
+            <div class="p-3 rounded-3" style="background: rgba(0, 191, 255, 0.05); border-left: 4px solid #00bfff;">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label for="blueRange" class="fw-bold mb-0" style="color: #00bfff;">AZUL (B)</label>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-secondary small">Valor:</span>
+                  <input type="number" class="form-control text-center text-white fw-bold" id="blueInput" min="0" max="255" value="0" style="width: 75px; background: #0d0f17; border: 1px solid #00bfff;">
+                </div>
+              </div>
+              <input type="range" class="form-range" id="blueRange" min="0" max="255" value="0">
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-center mt-4 text-secondary small">
+      <p>Proyecto Desarrollado para la Asignatura de <strong class="text-white">Graficación</strong></p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
